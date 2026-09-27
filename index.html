@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INCAROSA · Gestión de Obligaciones</title>
+<style>
+  html,body{margin:0;height:100%;background:#EBF1F8;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
+  iframe{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;}
+  #cargando{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#48607a;font-size:15px;}
+</style>
+</head>
+<body>
+<div id="cargando">Cargando…</div>
+<!--
+  La app vive en Google Apps Script. Abierta directo, un navegador con varias
+  cuentas de Google da «No se puede abrir el archivo». Aquí se abre SIN las
+  cookies de Google (como en incógnito): `credentialless` en Chrome/Edge; en
+  Firefox y Safari las cookies de terceros ya van aisladas.
+  Todo lo que venga en la dirección (?p=…&k=…&obl=…&reset=…) pasa a la app.
+-->
+<script>
+  var APP = 'https://script.google.com/macros/s/AKfycbzpjHJoDAf38412FygLQcxph_NtrDpPxbukvy1OmLzkmGggAoLmRi8rtkyVJZeGiVZGCw/exec';
+  var f = document.createElement('iframe');
+  f.setAttribute('credentialless', '');
+  f.setAttribute('allow', 'clipboard-write');
+  f.title = 'INCAROSA · Gestión de Obligaciones';
+  f.src = APP + location.search;
+  f.onload = function(){ var c = document.getElementById('cargando'); if (c) c.remove(); };
+  document.body.appendChild(f);
+</script>
+</body>
+</html>
